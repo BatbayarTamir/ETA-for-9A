@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Tracker</title>
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 400px; margin: 40px auto; padding: 20px; background: #f9f9f9; color: #333; }
+    .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    input, select, textarea, button { width: 100%; padding: 10px; margin-top: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    button { background: #000; color: white; border: none; cursor: pointer; font-weight: bold; }
+    button:hover { background: #333; }
+    .hidden { display: none; }
+    .row { display: flex; align-items: center; gap: 10px; }
+    .row input { width: auto; margin: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- AUTH SECTION -->
+  <div id="auth-section" class="card">
+    <h2>Login / Sign Up</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button id="login-btn">Log In</button>
+    <button id="signup-btn" style="background: #444;">Sign Up</button>
+  </div>
+
+  <!-- SUBMISSION SECTION (Hidden until logged in) -->
+  <div id="app-section" class="card hidden">
+    <h2>Daily Submission</h2>
+    <p id="user-display" style="font-size: 0.9rem; color: #666;"></p>
+    
+    <label>Arrival Time:</label>
+    <input type="datetime-local" id="arrivalTime">
+
+    <div class="row">
+      <input type="checkbox" id="wornUniform">
+      <label for="wornUniform">Worn Uniform?</label>
+    </div>
+
+    <label>Lesson Autonomy (1 - 5):</label>
+    <select id="lessonAutonomy">
+      <option value="1">1 - Low</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 - Moderate</option>
+      <option value="4">4</option>
+      <option value="5">5 - High</option>
+    </select>
+
+    <label>Participation (1 - 5):</label>
+    <select id="participation">
+      <option value="1">1 - Low</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 - Moderate</option>
+      <option value="4">4</option>
+      <option value="5">5 - High</option>
+    </select>
+
+    <label>Project Work Summary:</label>
+    <textarea id="projectWork" rows="3" placeholder="What did you work on today?"></textarea>
+
+    <button id="submit-btn">Submit Record</button>
+    <button id="logout-btn" style="background: #d9534f; margin-top: 10px;">Log Out</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
